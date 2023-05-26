@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/3ccab63bad.js" crossorigin="anonymous"></script>
+    <title>Weather App</title>
+</head>
+<body>
+    <section class="container my-5">
+        <h1 class="my-5 text-center">Weather App</h1>
+        <div class="row my-4 d-flex align-items-center">
+            <div class="col-6">
+                <input type="text" name="weather" id="weather">
+            </div>
+            <div class="col-3">
+                <button class="show-weather">Vremea acum</button>
+            </div>
+            <div class="col-3">
+                <button class="show-prognosis">Prognoza meteo</button>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-6">
+                <div class="weather-now">
+                    <p class="description">Descriere:</p>
+                    <p class="humidity">Umiditate:</p>
+                    <p class="pressure">Presiune:</p>
+                    <p class="temperature">Temperatura curenta:</p>
+                    <p class="min-temperature">Minima zilei:</p>
+                    <p class="max-temperature">Maxima zilei:</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <img class="weather-photo" src="photos/weather.jpg" alt="Weather Photo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 my-3">
+                <h3>Prognoza meteo</h3>
+                <div class="weather-prognosis"></div>
+            </div>
+        </div>
+    </section>
+   
+ 
+<script src="app.js"></script>
+</body>
+</html>
