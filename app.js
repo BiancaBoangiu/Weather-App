@@ -47,36 +47,51 @@ function showWeatherInfo() {
 
 const prognosisButton = document.querySelector(".show-prognosis");
 prognosisButton.addEventListener("click", showWeatherPrognosis);
+
 function showWeatherPrognosis() {
   const inputValue = document.querySelector("input").value;
-  if (inputValue != "") {
+  if (inputValue !== "") {
     fetch(
       "https://api.openweathermap.org/data/2.5/forecast?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=" +
         inputValue
     )
       .then((response) => response.json())
       .then((data) => {
-        const templates = [];
+        const templates = {};
         data.list.forEach((element) => {
-          console.log(element);
           const dateTime = new Date(element.dt_txt);
-          const date = dateTime.toLocaleDateString();
+          const year = dateTime.getUTCFullYear();
+          const month = (dateTime.getUTCMonth() + 1)
+            .toString()
+            .padStart(2, "0");
+          const day = dateTime.getUTCDate().toString().padStart(2, "0");
+          const date = `${year}-${month}-${day}`;
+
+          if (!templates[date]) {
+            templates[date] = "";
+          }
+
           const hour = dateTime.toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
           });
-          let template = `
-                <div class="day">
-                    <p class="day-prognosis">${date}</p>
-                    <p class="hour">Ora: ${hour}</p>
-                    <p class="temperature-prognosis">Temperatura: ${element.main.temp}</p>
-                    <p class="description-prognosis">Descriere: ${element.weather[0].description}</p>
-                </div>`;
 
-          templates.push(template);
+          let template = `
+              <div class="col-2 date-column">
+                <p class="day-prognosis">${date}</p>
+                <p class="hour">Ora: ${hour}</p>
+                <p class="temperature-prognosis">Temperatura: ${element.main.temp}</p>
+                <p class="description-prognosis">Descriere: ${element.weather[0].description}</p>
+              </div>`;
+
+          templates[date] += template;
         });
 
-        const joinedTemplate = templates.join("");
+        let joinedTemplate = "";
+        Object.keys(templates).forEach((date) => {
+          const rowTemplate = `<div class="row">${templates[date]}</div>`;
+          joinedTemplate += rowTemplate;
+        });
 
         const prognosisData = document.querySelector(".weather-prognosis");
         prognosisData.innerHTML = joinedTemplate;
