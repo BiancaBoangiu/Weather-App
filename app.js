@@ -76,12 +76,57 @@ function showWeatherPrognosis() {
             minute: "2-digit",
           });
 
+          const weatherDescription = element.weather[0].description;
+          let icon = "";
+
+          switch (weatherDescription) {
+            case "clear sky":
+              icon = '<i class="fas fa-sun"></i>';
+              break;
+            case "few clouds":
+              icon = '<i class="fas fa-cloud-sun"></i>';
+              break;
+            case "scattered clouds":
+              icon = '<i class="fas fa-cloud"></i>';
+              break;
+            case "broken clouds":
+              icon = '<i class="fas fa-clouds"></i>';
+              break;
+            case "broken clouds":
+              icon = '<i class="fas fa-clouds"></i>';
+              break;
+            case "overcast clouds":
+              icon = '<i class="fas fa-cloud"></i>';
+              break;
+            case "light rain":
+              icon = '<i class="fas fa-cloud-rain"></i>';
+              break;
+            case "shower rain":
+              icon = '<i class="fas fa-cloud-showers-heavy"></i>';
+              break;
+            case "rain":
+              icon = '<i class="fas fa-cloud-rain"></i>';
+              break;
+            case "thunderstorm":
+              icon = '<i class="fas fa-bolt"></i>';
+              break;
+            case "snow":
+              icon = '<i class="fas fa-snowflake"></i>';
+              break;
+            case "mist":
+              icon = '<i class="fas fa-smog"></i>';
+              break;
+            default:
+              icon = '<i class="fas fa-question"></i>';
+              break;
+          }
           let template = `
               <div class="col-2 date-column">
                 <p class="day-prognosis">${date}</p>
                 <p class="hour">Ora: ${hour}</p>
                 <p class="temperature-prognosis">Temperatura: ${element.main.temp}</p>
                 <p class="description-prognosis">Descriere: ${element.weather[0].description}</p>
+                <div class="weather-icon">${icon}</div>
               </div>`;
 
           templates[date] += template;
