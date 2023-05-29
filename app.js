@@ -89,7 +89,7 @@ function showWeatherPrognosis() {
 
         let joinedTemplate = "";
         Object.keys(templates).forEach((date) => {
-          const rowTemplate = `<div class="row">${templates[date]}</div>`;
+          const rowTemplate = `<div class="row my-3">${templates[date]}</div>`;
           joinedTemplate += rowTemplate;
         });
 
