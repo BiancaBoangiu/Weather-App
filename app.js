@@ -13,26 +13,51 @@ function showWeatherInfo() {
         const weatherDescription = data.weather[0].description;
         let iconWeather = "";
 
-        switch (true) {
-          case weatherDescription.includes("rain"):
-            iconWeather = "fa-solid fa-cloud-rain";
+        switch (weatherDescription) {
+          case "clear sky":
+            iconWeather = '<i class="fas fa-sun"></i>';
             break;
-          case weatherDescription.includes("cloud"):
-            iconWeather = "fa-solid fa-cloud";
+          case "few clouds":
+            iconWeather = '<i class="fas fa-cloud-sun"></i>';
             break;
-          case weatherDescription.includes("sun"):
-            iconWeather = "fa-solid fa-sun";
+          case "scattered clouds":
+            iconWeather = '<i class="fas fa-cloud"></i>';
             break;
-          case weatherDescription.includes("clear"):
-            iconWeather = "fa-shard fa-light fa-cloud-sun";
+          case "broken clouds":
+            iconWeather = '<i class="fas fa-clouds"></i>';
+            break;
+          case "broken clouds":
+            iconWeather = '<i class="fas fa-clouds"></i>';
+            break;
+          case "overcast clouds":
+            iconWeather = '<i class="fas fa-cloud"></i>';
+            break;
+          case "light rain":
+            iconWeather = '<i class="fas fa-cloud-rain"></i>';
+            break;
+          case "shower rain":
+            iconWeather = '<i class="fas fa-cloud-showers-heavy"></i>';
+            break;
+          case "rain":
+            iconWeather = '<i class="fas fa-cloud-rain"></i>';
+            break;
+          case "thunderstorm":
+            iconWeather = '<i class="fas fa-bolt"></i>';
+            break;
+          case "snow":
+            iconWeather = '<i class="fas fa-snowflake"></i>';
+            break;
+          case "mist":
+            iconWeather = '<i class="fas fa-smog"></i>';
             break;
           default:
-            iconWeather = "fa fa-question";
+            iconWeather = '<i class="fas fa-question"></i>';
             break;
         }
         let template = `
-                    <p class="description">
-                    <i class="${iconWeather}"></i> Descriere: ${data.weather[0].description}</p>
+                    <span class="description">
+                    Descriere: ${data.weather[0].description}</span>
+                    ${iconWeather}
                     <p class="humidity">Umiditate: ${data.main.humidity}</p>
                     <p class="pressure">Presiune: ${data.main.pressure}</p>
                     <p class="temperature">Temperatura curenta: ${data.main.temp}</p>
