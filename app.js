@@ -27,7 +27,7 @@ function showWeatherInfo() {
             iconWeather = '<i class="fas fa-clouds"></i>';
             break;
           case "broken clouds":
-            iconWeather = '<i class="fas fa-clouds"></i>';
+            iconWeather = '<i class="fas fa-cloud-sun"></i>';
             break;
           case "overcast clouds":
             iconWeather = '<i class="fas fa-cloud"></i>';
